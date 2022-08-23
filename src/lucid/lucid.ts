@@ -192,7 +192,7 @@ export class Lucid {
         return rewardAddress;
       },
       getCollateral: async () => {
-        const utxos = (await api.experimental.getCollateral()).map((utxo) => {
+        const utxos = (await api.getCollateral()).map((utxo) => {
           const parsedUtxo = C.TransactionUnspentOutput.from_bytes(
             fromHex(utxo),
           );
@@ -201,7 +201,7 @@ export class Lucid {
         return utxos;
       },
       getCollateralCore: async () => {
-        const utxos = (await api.experimental.getCollateral()).map((utxo) => {
+        const utxos = (await api.getCollateral()).map((utxo) => {
           return C.TransactionUnspentOutput.from_bytes(fromHex(utxo));
         });
         return utxos;
